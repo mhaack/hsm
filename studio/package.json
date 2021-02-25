@@ -1,9 +1,9 @@
 {
   "private": true,
-  "name": "sanity-nextjs-landing-pages-studio",
-  "version": "1.0.10",
+  "name": "hsm-studio",
+  "version": "1.0.0",
   "main": "package.json",
-  "author": "Sanity <hello@sanity.io>",
+  "author": "Markus Haack <markus.haack@gmail.com>",
   "scripts": {
     "build": "sanity build",
     "dev": "sanity start",

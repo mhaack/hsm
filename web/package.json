@@ -1,8 +1,8 @@
 {
   "private": true,
-  "name": "sanity-nextjs-landing-pages-web",
-  "version": "1.0.11",
-  "author": "Sanity <hello@sanity.io>",
+  "name": "hsm-web",
+  "version": "1.0.0",
+  "author": "Markus Haack <markus.haack@gmail.com>",
   "scripts": {
     "dev": "next",
     "build": "next build && next export && node exportSitemap.js",
