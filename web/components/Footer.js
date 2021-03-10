@@ -1,60 +1,23 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Link from 'next/link'
-import {withRouter} from 'next/router'
-import styles from './Footer.module.css'
-import SimpleBlockContent from './SimpleBlockContent'
+import Container from './container'
 
-function Footer (props) {
-  const {navItems, text, router} = props
+export default function Footer() {
   return (
-    <div className={styles.root}>
-      <nav>
-        <ul className={styles.items}>
-          {navItems &&
-            navItems.map(item => {
-              const isActive =
-                router.pathname === '/LandingPage' && router.query.slug === item.slug.current
-              return (
-                <li key={item._id} className={styles.item}>
-                  <Link
-                    href={{
-                      pathname: '/LandingPage',
-                      query: {slug: item.slug.current}
-                    }}
-                    as={`/${item.slug.current}`}
-                    prefetch
-                  >
-                    <a data-is-active={isActive ? 'true' : 'false'}>{item.title}</a>
-                  </Link>
-                </li>
-              )
-            })}
-        </ul>
-      </nav>
-      <div className={styles.text}>
-        <SimpleBlockContent blocks={text} />
-      </div>
-    </div>
+    <footer className="bg-accent-1 border-t border-accent-2">
+      <Container>
+        <div className="py-28 flex flex-col lg:flex-row items-center">
+          <h3 className="text-4xl lg:text-5xl font-bold tracking-tighter leading-tight text-center lg:text-left mb-10 lg:mb-0 lg:pr-4 lg:w-1/2">
+            Statically Generated with Next.js.
+          </h3>
+          <div className="flex flex-col lg:flex-row justify-center items-center lg:pl-4 lg:w-1/2">
+            <a
+              href={`https://github.com/...`}
+              className="mx-3 font-bold hover:underline"
+            >
+              View on GitHub
+            </a>
+          </div>
+        </div>
+      </Container>
+    </footer>
   )
 }
-
-Footer.propTypes = {
-  navItems: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string.isRequired,
-      slug: PropTypes.shape({
-        current: PropTypes.string
-      }).isRequired
-    })
-  ),
-  text: PropTypes.arrayOf(PropTypes.object),
-  router: PropTypes.shape({
-    pathname: PropTypes.string,
-    query: PropTypes.shape({
-      slug: PropTypes.string
-    })
-  })
-}
-
-export default withRouter(Footer)

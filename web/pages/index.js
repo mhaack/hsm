@@ -1,21 +1,39 @@
-import PropTypes from 'prop-types'
-import React from 'react'
-import Layout from '../components/Layout'
+import Head from "next/head";
+import Link from "next/link";
+import Container from "../components/container";
+import Title from "../components/title";
+import Layout from "../components/layout";
+import { indexQuery } from "../lib/queries";
+import { getClient } from "../lib/sanity.server";
 
-class IndexPage extends React.Component {
-  static propTypes = {
-    config: PropTypes.object
-  }
-
-  render () {
-    const {config} = this.props
-    return (
-      <Layout config={config}>
-        <h1>No route set</h1>
-        <h2>Setup automatic routes in sanity or custom routes in next.config.js</h2>
+export default function Index({ allCards }) {
+  return (
+    <>
+      <Layout>
+        <Head>
+          <title>School Motivation Cards</title>
+        </Head>
+        <Container>
+          <Title />
+          <ul>
+            {allCards.map((card) => (
+              <li key={card._id}>
+                Card:{' '}
+                <Link href={`/card/${card.slug}`}>
+                  <a>{card.title}</a>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </Container>
       </Layout>
-    )
-  }
+    </>
+  );
 }
 
-export default IndexPage
+export async function getStaticProps({ preview = false }) {
+  const allCards = await getClient(preview).fetch(indexQuery);
+  return {
+    props: { allCards: allCards },
+  };
+}
