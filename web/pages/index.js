@@ -2,14 +2,14 @@ import Head from "next/head";
 import Link from "next/link";
 import Container from "../components/container";
 import Title from "../components/title";
-import Layout from "../components/layout";
+//import Layout from "../components/layout";
 import { indexQuery } from "../lib/queries";
 import { getClient } from "../lib/sanity.server";
 
 export default function Index({ allCards }) {
   return (
     <>
-      <Layout>
+      {/* <Layout> */}
         <Head>
           <title>School Motivation Cards</title>
         </Head>
@@ -26,7 +26,7 @@ export default function Index({ allCards }) {
             ))}
           </ul>
         </Container>
-      </Layout>
+      {/* </Layout> */}
     </>
   );
 }
