@@ -19,7 +19,7 @@ export default function Index({ allCards }) {
             {allCards.map((card) => (
               <li key={card._id}>
                 Card:{' '}
-                <Link href={`/card/${card.slug}`}>
+                <Link href={`/cards/${card.slug}`}>
                   <a>{card.title}</a>
                 </Link>
               </li>
