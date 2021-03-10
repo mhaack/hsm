@@ -1,1 +1,1 @@
-# hsm-studio
+# smc-studio
