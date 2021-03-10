@@ -1,4 +1,4 @@
-import Container from './container'
+import Container from "./container";
 
 export default function Footer() {
   return (
@@ -9,15 +9,12 @@ export default function Footer() {
             Statically Generated with Next.js.
           </h3>
           <div className="flex flex-col lg:flex-row justify-center items-center lg:pl-4 lg:w-1/2">
-            <a
-              href={`https://github.com/...`}
-              className="mx-3 font-bold hover:underline"
-            >
+            <a href={`https://github.com/...`} className="mx-3 font-bold hover:underline">
               View on GitHub
             </a>
           </div>
         </div>
       </Container>
     </footer>
-  )
+  );
 }

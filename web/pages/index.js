@@ -2,23 +2,23 @@ import Head from "next/head";
 import Link from "next/link";
 import Container from "../components/container";
 import Title from "../components/title";
-//import Layout from "../components/layout";
+import Layout from "../components/layout";
 import { indexQuery } from "../lib/queries";
 import { getClient } from "../lib/sanity.server";
 
 export default function Index({ allCards }) {
   return (
     <>
-      {/* <Layout> */}
+      <Layout>
         <Head>
           <title>School Motivation Cards</title>
         </Head>
         <Container>
           <Title />
           <ul>
-            {allCards.map((card) => (
+            {allCards.map(card => (
               <li key={card._id}>
-                Card:{' '}
+                Card:{" "}
                 <Link href={`/cards/${card.slug}`}>
                   <a>{card.title}</a>
                 </Link>
@@ -26,7 +26,7 @@ export default function Index({ allCards }) {
             ))}
           </ul>
         </Container>
-      {/* </Layout> */}
+      </Layout>
     </>
   );
 }
@@ -34,6 +34,6 @@ export default function Index({ allCards }) {
 export async function getStaticProps({ preview = false }) {
   const allCards = await getClient(preview).fetch(indexQuery);
   return {
-    props: { allCards: allCards },
+    props: { allCards: allCards }
   };
 }

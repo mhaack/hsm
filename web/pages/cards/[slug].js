@@ -14,15 +14,6 @@ export default function Card({ data = {}, preview }) {
 
   const slug = data?.card?.slug;
   const card = data?.card;
-  // const {
-  //   data: { card },
-  // } =
-  //   (cardQuery,
-  //   {
-  //     params: { slug },
-  //     initialData: data,
-  //     enabled: preview && slug,
-  //   });
 
   if (!router.isFallback && !slug) {
     return <ErrorPage statusCode={404} />;
@@ -38,7 +29,7 @@ export default function Card({ data = {}, preview }) {
           <>
             <article>
               <Head>
-                <title>{card.title} | Next.js Blog Example</title>
+                <title>{card.title}</title>
                 {/* {post.coverImage && (
                   <meta
                     key="ogImage"
@@ -64,21 +55,21 @@ export default function Card({ data = {}, preview }) {
 
 export async function getStaticProps({ params, preview = false }) {
   const { card } = await getClient(preview).fetch(cardQuery, {
-    slug: params.slug,
+    slug: params.slug
   });
   return {
     props: {
       data: {
-        card,
-      },
-    },
+        card
+      }
+    }
   };
 }
 
 export async function getStaticPaths() {
   const paths = await sanityClient.fetch(cardSlugsQuery);
   return {
-    paths: paths.map((slug) => ({ params: { slug } })),
-    fallback: false,
+    paths: paths.map(slug => ({ params: { slug } })),
+    fallback: false
   };
 }

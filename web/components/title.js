@@ -5,5 +5,5 @@ export default function Title() {
         School Motivation Cards
       </h1>
     </section>
-  )
+  );
 }
